@@ -1,0 +1,121 @@
+.home-containter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 100%;
+}
+
+.home{
+    background-image: url('../../assets/web.svg');
+    height: 45vh;
+    width: 100%;
+    max-width:1500px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #005eba;
+    font-weight: 600;
+}
+
+.home h1{
+    color: #ff852b;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.home h2{
+    color: #005eba;
+}
+
+.home i{
+    color: #ff852b;
+}
+
+.home li{
+    margin: 0.5rem 0;
+}
+.home-information{
+    margin: 0 1.5rem;
+}
+.img-container{
+    display: none;
+}
+
+.img-container img{
+    width: 25vw;
+    min-width: 20rem;
+}
+
+.information-logo{
+    display: flex;
+    align-items: center;
+}
+
+.information-logo h1{
+    color: #ff852b;
+    margin-bottom: 0;
+}
+
+.information-logo img{
+    filter: invert(45%) sepia(86%) saturate(870%) hue-rotate(339deg) brightness(100%) contrast(101%);
+    height: 6rem;
+}
+
+.text-next-to-logo{
+    display: inline-block;
+    padding-bottom: rem;
+}
+
+
+
+/* CSS */
+.home-button-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.home-login-button {
+  background: #ff852b;
+  border: 1px solid #ff852b;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  width: 10rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  margin: 1rem;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.home-login-button:hover,
+.home-login-button:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #ff852b;
+}
+
+.home-login-button:active {
+  opacity: .5;
+}
+
+@media (min-width: 992px) { 
+    .img-container{
+        display: initial;
+    }
+}

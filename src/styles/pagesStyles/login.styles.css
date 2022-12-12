@@ -1,0 +1,30 @@
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 100%;
+}
+
+.login{
+    background-image: url('../../assets/web.svg');
+    height: 45vh;
+    width: 100%;
+    max-width:1500px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #005eba;
+    font-weight: 600;
+}
+
+.img-container img{
+    width: 35vw;
+    min-width: 30rem;
+}
+
+@media (min-width: 992px) { 
+    .login{
+        justify-content: space-around;
+    }
+}

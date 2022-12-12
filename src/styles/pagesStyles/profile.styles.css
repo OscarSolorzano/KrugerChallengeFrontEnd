@@ -1,0 +1,66 @@
+.profile-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    width: 100%;
+}
+
+.profile{
+    background-image: url('../../assets/web.svg');
+    min-height: 45vh;
+    width: 100%;
+    max-width:1500px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: column;
+    color: #005eba;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.profile h1{
+    color: #ff852b;
+    font-size: 3rem;
+    margin: 1rem;
+}
+
+.profile h3{
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.profile p{
+    text-align: justify;
+    color: rgb(61, 61, 61);
+}
+
+.user-profile{
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 1rem;
+    margin: 0 1.5rem;
+}
+
+.vaccination-info{
+    text-align: center;
+}
+
+.vaccination-info p{
+    font-weight: 800;
+    text-align: center;
+    margin: 0.4rem;
+}
+
+.vaccination-info span{
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ff852b;
+}

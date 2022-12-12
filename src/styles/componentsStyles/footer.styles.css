@@ -1,0 +1,51 @@
+.footer{
+    position: initial;
+    bottom: 0;
+    z-index: 1;
+
+    height: 10vh;
+    width: 100vw;
+    background-color: #005eba;
+
+    color: white;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.description{
+    width: 50%;
+    display: none;
+    
+}
+
+.author {
+    display: flex;
+    justify-content: center;
+}
+
+.name{
+    display: flex;
+    flex-flow: column;
+}
+.social-media{
+    display: flex;
+    margin: 1rem;
+    justify-content: center;
+}
+
+.social-media a{
+    margin: 0 0.2rem;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+    .description{
+        display: flex;
+    }
+
+    .social-media a{
+        margin: 0 0.4rem;
+    }
+ }

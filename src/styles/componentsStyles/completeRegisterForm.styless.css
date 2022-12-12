@@ -1,0 +1,59 @@
+.form-container form{
+    padding: 1rem 4rem;
+}
+.login__field{
+    padding-top: 0;
+}
+
+.login__icon {
+    top: 10px;
+}
+
+.button-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.css-b62m3t-container {
+    max-width: 270px;
+    margin-top: 0.5rem;
+}
+
+.doses-label{
+    margin-top: 0.5rem;
+}
+
+
+.complete-registration-button {
+  background: #ff852b;
+  border: 1px solid #ff852b;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  width: 20rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  margin: 1rem;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.complete-registration-button:hover,
+.complete-registration-button:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #ff852b;
+}

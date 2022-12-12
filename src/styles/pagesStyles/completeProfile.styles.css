@@ -1,0 +1,24 @@
+.complete-profile-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    width: 100%;
+}
+
+.complete-profile{
+    background-image: url('../../assets/web.svg');
+    min-height: 45vh;
+    width: 100%;
+    max-width:1500px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #005eba;
+    font-weight: 600;
+}
+
+.img-container img{
+    width: 25vw;
+    min-width: 20rem;
+}
