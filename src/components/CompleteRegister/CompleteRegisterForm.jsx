@@ -2,13 +2,31 @@ import React , { useState } from 'react';
 import '../../styles/componentsStyles/completeRegisterForm.styless.css';
 import { useForm } from 'react-hook-form';
 import Select from 'react-select';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setIsLoading } from '../../store/slices/isLoading.slice';
+import Modal from '../Modal';
+import axios from 'axios';
+
 
 
 const CompleteRegisterForm = () => {
   const { register, handleSubmit, reset , control } = useForm();
 
-  const [selectedVaccine, setSelectedVaccine] = useState();
-  const [isVaccinated, setIsVaccinated] = useState(false);
+  const [selectedVaccine, setSelectedVaccine] = useState({ value: 'Sputnik', label: 'Sputnik' });
+
+  const [isVaccinated, setIsVaccinated] = useState({ value: false, label: 'No' });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [message, setMessage] = useState();
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate()
+
+  const setLoadingScreen = (isLoading) => dispatch(setIsLoading(isLoading));
+
 
   const isVaccinatedOptions = [
     { value: true, label: 'Yes' },
@@ -23,20 +41,49 @@ const CompleteRegisterForm = () => {
   ];
 
   const submit = (data) => {
-    console.log(data);
-    console.log(isVaccinated.value)
+
+    setLoadingScreen(true);
+
+    data.isVaccinated = isVaccinated.value;
+
+    if(isVaccinated.value) data.vaccine = selectedVaccine.value
+
+    axios
+      .post(
+        'https://kruggerchallengebackend-production.up.railway.app/api/v1/users/profile',
+        data,
+        {headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }}
+      )
+      .then((res) => {
+        const user = res.data.data.user
+        localStorage.setItem('userInfo', JSON.stringify(user));
+        navigate('/profile')
+      })
+      .catch((error) => {
+        let errorMessage = error.response.data.error.errors?.[0].message;
+        setMessage(errorMessage)
+        setIsModalOpen(true);
+
+      }).finally(()=>setLoadingScreen(false))
+    reset();
   };
 
+
+
   return (
+    <>
+          <Modal setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen} title={'Error'} message={message} />
+
       <div className="form-container">
         <form onSubmit={handleSubmit(submit)}>
-          <label>Phone</label>
+          <label>Mobile Phone</label>
           <div className="login__field">
             <i className="login__icon fas fa-user"></i>
             <input
-              type="text"
+              type="tel"
+              pattern="[0][89][0-9]{8}"
               className="login__input"
-              placeholder="Phone"
+              placeholder="098 225 9813"
               required
               {...register('phone')}
             />
@@ -85,6 +132,7 @@ const CompleteRegisterForm = () => {
               type="number"
               min="1" max="9"
               className="login__input"
+              required
               {...register('numberOfDoses')}
             />
           </div>
@@ -94,6 +142,7 @@ const CompleteRegisterForm = () => {
             <input
               type="date"
               className="login__input"
+              required
               {...register('vaccinationDate')}
             />
           </div>
@@ -106,6 +155,7 @@ const CompleteRegisterForm = () => {
           </div>
         </form>
       </div>
+      </>
   );
 };
 

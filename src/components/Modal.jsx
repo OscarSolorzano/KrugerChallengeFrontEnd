@@ -1,16 +1,16 @@
 import React from 'react';
 import '../styles/componentsStyles/modal.styless.css'
 
-const Modal = ({isModalOpen, setIsModalOpen}) => {
+const Modal = ({isModalOpen, setIsModalOpen, title ,message ,optionalMessage}) => {
     return (
         <div className={`modal-bkg ${isModalOpen && 'open'}`}>
             <div className='modal'>
-                {/* <button className='modal-close' onClick={()=>setIsModalOpen(false)}><i className="fa-solid fa-x"></i></button> */}
                 <div className='modal-title'>
-                    <h2>Error</h2>
+                    <h2>{title}</h2>
                 </div>
                 <div className='modal-body'>
-                    <p>Wrong username or password</p>
+                    <p>{message}</p>
+                    <p>{optionalMessage}</p>
                 </div>
                 <div className='modal-footer'>
                     <button onClick={()=>setIsModalOpen(false)}>Continue</button>

@@ -1,0 +1,115 @@
+.user-card{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 2rem;
+    color: rgba(0, 0, 0, 0.795);
+    margin: 1rem 2rem;
+
+    min-height: 42rem;
+}
+
+.user-card h2{
+   color: #ff852b;
+}
+
+.user-card h3{
+    color: #005eba;
+ }
+ 
+ .user-card p{
+     margin-bottom: 0.8rem;
+ }
+
+ .user-card-info{
+    min-height: 357.7px;
+ }
+
+ .user-card-info h2{
+  margin-bottom: 1rem;
+ }
+
+.user-card-info div{
+    display: flex;
+    flex-flow: column;
+}
+
+.user-card-info div div{
+    display: flex;
+    flex-flow: column;
+}
+
+.vaccination-info{
+    display: flex;
+    flex-flow: column;
+    min-height: 130.781px;
+    
+}
+
+.button-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card-button {
+    background: #ff852b;
+    border: 1px solid #ff852b;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    width: 15rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    margin: 0.5rem;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .card-button:hover,
+  .card-button:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #ff852b;
+  }
+
+  .card-button.edit-user{
+    background: #005eba;
+    border: 1px solid #005eba;
+  }
+
+  .card-button.edit-user:hover,
+  .card-button.edit-user:active{
+    color: #005eba;
+    background: #FFFFFF;
+  }
+
+  .card-button.delete-user{
+    background: #C70000    ;
+    border: 1px solid #C70000;
+  }
+
+  .card-button.delete-user:hover,
+  .card-button.delete-user:active{
+    color: #C70000;
+    background: #FFFFFF;
+  }

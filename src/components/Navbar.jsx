@@ -8,9 +8,13 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const [show, setShow] = useState(false);
 
-  const handleshow = () => setShow(!show);
+  const handleshow = (state) => setShow(state);
 
   const isLogged = useSelector((state) => state.isLogged);
+
+  let user
+
+  if(isLogged) user = JSON.parse( localStorage.getItem('userInfo'))
 
   const dispatch = useDispatch();
 
@@ -20,12 +24,12 @@ const Navbar = () => {
     localStorage.setItem('token', '');
     localStorage.setItem('userInfo', {});
     dispatch(setIsLogged(false));
-    handleshow();
+    handleshow(false);
     navigate('/');
   };
 
   const logIn = () =>{
-    handleshow()
+    handleshow(false)
     navigate('/login')
   }
 
@@ -50,9 +54,22 @@ const Navbar = () => {
               </li>
             </>
           )}
+          {
+            isLogged && user?.role === 'admin' &&(
+              <>
+              <li>
+                <button onClick={()=> {
+                  navigate('/add-user')
+                  handleshow(false)
+                 }}
+                  >Add User</button>
+              </li>
+            </>
+            )
+          }
         </ul>
       </div>
-      <div className={`icon hamburguer ${show && 'open'}`} onClick={handleshow}>
+      <div className={`icon hamburguer ${show && 'open'}`} onClick={() =>handleshow(!show)}>
         <span></span>
         <span></span>
         <span></span>

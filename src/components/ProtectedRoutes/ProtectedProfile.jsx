@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
-const AdminRoutes = () => {
+const ProtectedProfileRegister = () => {
     const user = JSON.parse(localStorage.getItem('userInfo'))
-    if(user.role === 'admin'){
+    if(user.profile){
         return <Outlet />
     } else { 
-        return <Navigate to='/profile' />
+        return <Navigate to='/complete-profile' />
     } 
 };    
 
-export default AdminRoutes;
+export default ProtectedProfileRegister;

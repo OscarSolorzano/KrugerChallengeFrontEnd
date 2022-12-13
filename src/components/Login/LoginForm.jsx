@@ -56,7 +56,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <Modal setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen} />
+      <Modal setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen} title={'Error'} message={'Wrong username or password'} />
 
       <div className="form-container">
         <form onSubmit={handleSubmit(submit)}>

@@ -6,7 +6,7 @@
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     width: 30rem;
-    min-height: 20rem;
+    height: 20rem;
 
     margin:  0 2rem;
     
@@ -95,4 +95,5 @@
 .login-button:active {
   opacity: .5;
 }
+
 
