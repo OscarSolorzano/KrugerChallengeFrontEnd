@@ -1,5 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import { Home, Login, Profile, Users, CompleteProfile, AddUser } from './pages';
+import { Home, Login, Profile, Users, CompleteProfile, AddUser ,EditUser} from './pages';
 import {
   Navbar,
   ProtectedRoutes,
@@ -31,6 +31,7 @@ function App() {
           <Route element={<AdminRoutes />}>
             <Route path="/users" element={<Users />} />
             <Route path="/add-user" element={<AddUser />} />
+            <Route path="/edit-user/:id" element={<EditUser />} />
           </Route>
         </Route>
       </Routes>

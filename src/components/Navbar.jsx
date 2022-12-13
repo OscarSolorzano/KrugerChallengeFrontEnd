@@ -12,9 +12,9 @@ const Navbar = () => {
 
   const isLogged = useSelector((state) => state.isLogged);
 
-  let user
+  let user;
 
-  if(isLogged) user = JSON.parse( localStorage.getItem('userInfo'))
+  if (isLogged) user = JSON.parse(localStorage.getItem('userInfo'));
 
   const dispatch = useDispatch();
 
@@ -25,21 +25,45 @@ const Navbar = () => {
     localStorage.setItem('userInfo', {});
     dispatch(setIsLogged(false));
     handleshow(false);
-    navigate('/');
+    navigate('/users');
   };
 
-  const logIn = () =>{
-    handleshow(false)
-    navigate('/login')
-  }
+  const logIn = () => {
+    handleshow(false);
+    navigate('/login');
+  };
 
   return (
     <nav className="navbar">
-      <a href="#" className="logo">
+      <a href="/#/users" className="logo">
         <img src={logo} />
       </a>
       <div className={`nav-links ${show && 'open'}`}>
         <ul>
+          {isLogged && user?.role === 'admin' && (
+            <>
+              <li>
+                <button
+                  onClick={() => {
+                    navigate('/users');
+                    handleshow(false);
+                  }}
+                >
+                  Users
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    navigate('/add-user');
+                    handleshow(false);
+                  }}
+                >
+                  Add User
+                </button>
+              </li>
+            </>
+          )}
           {isLogged && (
             <>
               <li>
@@ -50,26 +74,16 @@ const Navbar = () => {
           {!isLogged && (
             <>
               <li>
-                <button onClick={logIn }>Log in</button>
+                <button onClick={logIn}>Log in</button>
               </li>
             </>
           )}
-          {
-            isLogged && user?.role === 'admin' &&(
-              <>
-              <li>
-                <button onClick={()=> {
-                  navigate('/add-user')
-                  handleshow(false)
-                 }}
-                  >Add User</button>
-              </li>
-            </>
-            )
-          }
         </ul>
       </div>
-      <div className={`icon hamburguer ${show && 'open'}`} onClick={() =>handleshow(!show)}>
+      <div
+        className={`icon hamburguer ${show && 'open'}`}
+        onClick={() => handleshow(!show)}
+      >
         <span></span>
         <span></span>
         <span></span>

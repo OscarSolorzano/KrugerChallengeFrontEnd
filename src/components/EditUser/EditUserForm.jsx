@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/componentsStyles/completeRegisterForm.styless.css';
 import { useForm } from 'react-hook-form';
 import Select from 'react-select';
@@ -6,8 +6,13 @@ import { useDispatch } from 'react-redux';
 import { setIsLoading } from '../../store/slices/isLoading.slice';
 import Modal from '../Modal';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const AddUserForm = () => {
+const EditUserForm = () => {
+  const { id } = useParams();
+
+  const [user, setUser] = useState()
+
   const { register, handleSubmit, reset } = useForm();
 
   const [selectedRole, setSelectedRole] = useState(null);
@@ -18,7 +23,6 @@ const AddUserForm = () => {
 
   const [message, setMessage] = useState();
 
-  const [optionalMessage, setOptionalMessage] = useState('');
 
   const dispatch = useDispatch();
 
@@ -35,20 +39,18 @@ const AddUserForm = () => {
     data.role = selectedRole?.value || 'user';
 
     axios
-      .post(
-        'https://kruggerchallengebackend-production.up.railway.app/api/v1/users',
+      .patch(
+        `https://kruggerchallengebackend-production.up.railway.app/api/v1/users/${id}`,
         data,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         }
       )
       .then((res) => {
-        const userInfo = res.data.data;
-        console.log(userInfo)
-        setMessage(`username: ${userInfo.userName}`);
-        setOptionalMessage(`password:  ${userInfo.password}`);
-        setTitle('User created Succesfully');
+        setMessage(`User updated succesfully`);
+        setTitle('Succes');
         setIsModalOpen(true);
+        reset();
       })
       .catch((error) => {
         console.log(error);
@@ -57,10 +59,38 @@ const AddUserForm = () => {
         setMessage(errorMessage);
         setIsModalOpen(true);
       })
-      .finally(() =>{ 
-      setLoadingScreen(false)});
-    reset();
+      .finally(() => {
+        setLoadingScreen(false);
+      });
   };
+
+  useEffect(()=>{
+    setLoadingScreen(true);
+
+    axios
+      .get(
+        `https://kruggerchallengebackend-production.up.railway.app/api/v1/users/${id}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        }
+      )
+      .then((res) => {
+        setUser(res.data.data.user)
+        console.log(user)
+      })
+      .catch((error) => {
+        console.log(error);
+        let errorMessage = error.response.data.error.errors?.[0].message;
+        setTitle('Error');
+        setMessage(errorMessage);
+        setIsModalOpen(true);
+      })
+      .finally(() => {
+        setLoadingScreen(false);
+      });
+
+  },[])
+
 
   return (
     <>
@@ -69,7 +99,6 @@ const AddUserForm = () => {
         isModalOpen={isModalOpen}
         title={title}
         message={message}
-        optionalMessage={optionalMessage}
       />
 
       <div className="form-container">
@@ -81,7 +110,7 @@ const AddUserForm = () => {
               type="text"
               pattern="[a-zA-Z\s]+$"
               className="login__input"
-              placeholder="No Special Characters"
+              placeholder={user?.names}
               required
               {...register('names')}
             />
@@ -93,9 +122,32 @@ const AddUserForm = () => {
               type="text"
               pattern="[a-zA-Z\s]+$"
               className="login__input"
-              placeholder="No Special Characters"
+              placeholder={user?.lastNames}
               required
               {...register('lastNames')}
+            />
+          </div>
+          <label>Username</label>
+          <div className="login__field">
+            <i className="login__icon fas fa-lock"></i>
+            <input
+              type="text"
+              pattern="[a-zA-Z\s.]+$"
+              className="login__input"
+              placeholder={user?.userName}
+              required
+              {...register('userName')}
+            />
+          </div>
+          <label>Password</label>
+          <div className="login__field">
+            <i className="login__icon fas fa-lock"></i>
+            <input
+              type="password"
+              className="login__input"
+              placeholder="Password"
+              required
+              {...register('password')}
             />
           </div>
           <label>E-mail</label>
@@ -127,7 +179,7 @@ const AddUserForm = () => {
           </div>
           <div className="button-container">
             <button type="sumbmit" className="complete-registration-button">
-              Add User
+             Update User
             </button>
           </div>
         </form>
@@ -136,4 +188,4 @@ const AddUserForm = () => {
   );
 };
 
-export default AddUserForm;
+export default EditUserForm;

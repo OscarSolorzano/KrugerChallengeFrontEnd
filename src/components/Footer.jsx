@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="description">
-        <h4>This is a techincal Challenge for Krugger</h4>
+        <h4>This is a techincal Challenge for Kruger</h4>
       </div>
       <div className="author">
         <div className="name">
@@ -13,13 +13,10 @@ const Footer = () => {
           <p>Oscar Solorzano</p>
         </div>
         <div className="social-media">
-          <a>
+          <a href='https://github.com/OscarSolorzano'>
             <i className="fa-brands fa-github fa-xl"></i>
           </a>
-          <a>
-            <i className="fa-brands fa-linkedin fa-xl"></i>
-          </a>
-          <a>
+          <a href='mailto:oscar.solorzano98@gmail.com'>
           <i className="fa-solid fa-envelope fa-xl"></i>
           </a>
         </div>

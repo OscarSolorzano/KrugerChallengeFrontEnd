@@ -77,7 +77,7 @@ const UserCard = ({ user }) => {
         </div>
       </div>
       <div className="button-containe">
-          <button className="card-button edit-user">Edit Credentials</button>
+          <button onClick={()=>navigate(`/edit-user/${user.id}`)} className="card-button edit-user">Edit Credentials</button>
         </div>
         <div className="button-containe">
           <button className="card-button delete-user" onClick={()=>deleteUser(user.id)}> Delete User</button>

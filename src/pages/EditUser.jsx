@@ -1,13 +1,12 @@
 import React from 'react';
 import addUserSVG from '../assets/undraw_forms_re_pkrt.svg';
-import AddUserForm from '../components/AddUser/AddUserForm';
+import EditUserForm from '../components/EditUser/EditUserForm';
 
-
-const AddUser = () => {
+const EditUser = () => {
     return (
-        <section className="login-container">
+<section className="login-container">
         <div className="login">
-            <AddUserForm />
+            <EditUserForm />
           <div>
             <div className="img-container">
               <img src={addUserSVG} />
@@ -18,4 +17,4 @@ const AddUser = () => {
     );
 };
 
-export default AddUser;
+export default EditUser;
